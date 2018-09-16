@@ -14,6 +14,8 @@
  ***********************************************************/
 package com.ankamma.application.respository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -24,5 +26,7 @@ import com.ankamma.application.persistence.model.Department;
  */
 @Repository
 public interface DepartmentJpaRepository extends JpaRepository<Department, Long> {
+
+	List<Department> findByDepartmentName(String deptName);
 
 }

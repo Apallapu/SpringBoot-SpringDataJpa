@@ -33,21 +33,29 @@ import com.ankamma.application.service.DepartmentService;
  */
 @RestController
 public class DepartmentControllerImpl implements DepartmentController {
-	
+
 	/** The department service. */
 	@Autowired
 	private DepartmentService departmentService;
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.controller.DepartmentController#createDepartment(com.ankamma.application.rest.model.DepartmentRequest)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.controller.DepartmentController#createDepartment(com.
+	 * ankamma.application.rest.model.DepartmentRequest)
 	 */
 	@Override
 	public DepartmentResponse createDepartment(@RequestBody DepartmentRequest departmentRequest) {
-		return departmentService.createDepartMent(departmentRequest);
+		DepartmentResponse departmentRespons = departmentService.createDepartMent(departmentRequest);
+		return departmentRespons;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.controller.DepartmentController#getAllDepartMent()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.controller.DepartmentController#getAllDepartMent()
 	 */
 	@Override
 	public List<DepartMent> getAllDepartMent() {
@@ -55,31 +63,49 @@ public class DepartmentControllerImpl implements DepartmentController {
 		return departmentService.getAllDepartMent();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.controller.DepartmentController#getDepartMentById(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.controller.DepartmentController#getDepartMentById(
+	 * java.lang.Long)
 	 */
 	@Override
 	public DepartMent getDepartMentById(@PathVariable Long deptId) {
 		return departmentService.getDepartMentById(deptId);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.controller.DepartmentController#updateDepartMentById(java.lang.Long, com.ankamma.application.rest.model.DepartmentRequest)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.controller.DepartmentController#updateDepartMentById(
+	 * java.lang.Long, com.ankamma.application.rest.model.DepartmentRequest)
 	 */
 	@Override
 	public void updateDepartMentById(Long deptId, DepartmentRequest departmentRequest) {
 		// TODO Auto-generated method stub
-		 departmentService.updateDepartMentById(deptId,departmentRequest);
+		departmentService.updateDepartMentById(deptId, departmentRequest);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.controller.DepartmentController#deleteDept(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.controller.DepartmentController#deleteDept(java.lang.
+	 * Long)
 	 */
 	@Override
 	public void deleteDept(@PathVariable Long deptId) {
-	
+
 		departmentService.deleteDept(deptId);
-		
+
+	}
+
+	@Override
+	public List<DepartMent> findByDeptName(String depName) {
+		// TODO Auto-generated method stub
+		return departmentService.findByDeptName(depName);
 	}
 
 }

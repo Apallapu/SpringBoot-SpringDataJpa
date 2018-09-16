@@ -24,6 +24,7 @@ import com.ankamma.application.rest.model.DepartmentResponse;
 /**
  * The Interface DepartmentService.
  */
+
 public interface DepartmentService {
 
 	/**
@@ -63,5 +64,7 @@ public interface DepartmentService {
 	 * @param deptId the dept id
 	 */
 	void deleteDept(Long deptId);
+
+	List<DepartMent> findByDeptName(String depName);
 
 }

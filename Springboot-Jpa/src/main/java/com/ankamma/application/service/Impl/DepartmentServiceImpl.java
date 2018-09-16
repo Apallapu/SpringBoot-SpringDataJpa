@@ -43,19 +43,24 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	private DepartmentJpaRepository departmentJpaRepository;
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.service.DepartmentService#createDepartMent(com.ankamma.application.rest.model.DepartmentRequest)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.ankamma.application.service.DepartmentService#createDepartMent(com.
+	 * ankamma.application.rest.model.DepartmentRequest)
 	 */
 	@Override
 	public DepartmentResponse createDepartMent(DepartmentRequest departmentRequest) {
 		DepartmentResponse departmentResponse = new DepartmentResponse();
 		Department department = departmentUtil.tranformEntity(departmentRequest);
 		department = departmentJpaRepository.save(department);
-		departmentResponse.setDepId(department.getDepartmentId() + "");
+		departmentResponse.setDepId(department.getDepartmentId());
 		return departmentResponse;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ankamma.application.service.DepartmentService#getAllDepartMent()
 	 */
 	@Override
@@ -66,32 +71,50 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.service.DepartmentService#getDepartMentById(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.service.DepartmentService#getDepartMentById(java.lang
+	 * .Long)
 	 */
 	@Override
 	public DepartMent getDepartMentById(Long deptId) {
-		Optional<Department> dept=departmentJpaRepository.findById(deptId);
+		Optional<Department> dept = departmentJpaRepository.findById(deptId);
 		return departmentUtil.tranformResponseById(dept.get());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.service.DepartmentService#updateDepartMentById(java.lang.Long, com.ankamma.application.rest.model.DepartmentRequest)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.service.DepartmentService#updateDepartMentById(java.
+	 * lang.Long, com.ankamma.application.rest.model.DepartmentRequest)
 	 */
 	@Override
 	public void updateDepartMentById(Long deptId, DepartmentRequest departmentRequest) {
-		Optional<Department> dept=departmentJpaRepository.findById(deptId);
-		 departmentUtil.updateDepartMentByIdMapper(dept.get(),departmentRequest);
-		 departmentJpaRepository.save(dept.get());
-		
+		Optional<Department> dept = departmentJpaRepository.findById(deptId);
+		departmentUtil.updateDepartMentByIdMapper(dept.get(), departmentRequest);
+		departmentJpaRepository.save(dept.get());
+
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ankamma.application.service.DepartmentService#deleteDept(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ankamma.application.service.DepartmentService#deleteDept(java.lang.Long)
 	 */
 	@Override
 	public void deleteDept(Long deptId) {
 		departmentJpaRepository.deleteById(deptId);
+	}
+
+	public List<DepartMent> findByDeptName(String deptName) {
+		// TODO Auto-generated method stub
+
+		List<Department> deptList = departmentJpaRepository.findByDepartmentName(deptName);
+		return departmentUtil.tranformResponse(deptList);
 	}
 
 }

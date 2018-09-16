@@ -14,6 +14,8 @@
  ***********************************************************/
 package com.ankamma.application.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class DepartmentResponse.
@@ -21,14 +23,16 @@ package com.ankamma.application.rest.model;
 public class DepartmentResponse {
 
 	/** The dep id. */
-	private String depId;
+
+	@JsonProperty("deptId")
+	private Long depId;
 
 	/**
 	 * Gets the dep id.
 	 *
 	 * @return the dep id
 	 */
-	public String getDepId() {
+	public Long getDepId() {
 		return depId;
 	}
 
@@ -37,11 +41,13 @@ public class DepartmentResponse {
 	 *
 	 * @param depId the new dep id
 	 */
-	public void setDepId(String depId) {
+	public void setDepId(Long depId) {
 		this.depId = depId;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -52,7 +58,9 @@ public class DepartmentResponse {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -72,7 +80,9 @@ public class DepartmentResponse {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
